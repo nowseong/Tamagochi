@@ -2,7 +2,7 @@ import { useState } from "react";
 import { auth, db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { push, ref, set, update } from "firebase/database";
+import { ref, update } from "firebase/database";
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -29,7 +29,7 @@ const Signup = () => {
                 }
             };
             update(usersRef, newUser);
-            navigate('/login');
+            navigate('/');
             console.log(CreatedUser);   
         } catch (e) {
             alert(e.message);

@@ -19,6 +19,7 @@ const StudyListPage = () => {
       // nextId.current = date.getTime();
       setTodos(data);
     });
+    console.log(auth.currentUser);
   }, []);
   
   const nextId = useRef(null);

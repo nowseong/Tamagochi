@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 
-const Login = ({ setState }) => {
+const Login = () => {
     const navigate = useNavigate('/');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -35,10 +35,7 @@ const Login = ({ setState }) => {
     const login = async () => {
         try {
             const curUserInfo = signInWithEmailAndPassword(auth, email, password);
-            setState({
-                user: curUserInfo.user,
-                isLoggedIn: true
-            });
+            console.log((await curUserInfo).user);
             navigate('/');
         } catch (e) {
             alert(e.message);
