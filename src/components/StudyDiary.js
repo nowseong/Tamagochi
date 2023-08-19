@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { MdAddCircleOutline } from 'react-icons/md';
 import { Link } from "react-router-dom";
 import { auth, db } from "../firebase";
+import './StudyDiary.scss';
 
 const StudyDiary = () => {
     const [diaryList, setDiaryList] = useState([]);
@@ -15,19 +16,17 @@ const StudyDiary = () => {
     }, []);
 
     return (
-        <>
+        <div className="studydiary-body">
             {diaryList.map(diary => {
                 if (diary !== "empty") {
                     return (
-                        <textarea readOnly>{diary.text}</textarea>
+                        <textarea readOnly className="diary" key={diary.id}>{diary.text}</textarea>
                     );
                 }
             })}
-            <div>
-                <Link to="/writediary"><MdAddCircleOutline /></Link>
-            </div>
-            <Link to='/'>ToHome</Link>
-        </>
+            <Link to="/writediary" className="towrite"><MdAddCircleOutline /></Link>
+            <Link to='/' className="studydiary-tohome">To Home</Link>
+        </div>
     )
 }
 

@@ -39,12 +39,12 @@ const Login = () => {
             console.log((await curUserInfo).user);
             navigate('/');
         } catch (e) {
-            alert(e.message);
+            alert("로그인 할 수 없습니다.");
         }
     }
 
     return (
-        <div className="body">
+        <div className="loginbody">
             <div className="box">
                 <h1 className="title">LOG IN</h1>
                 <div className="innerbox">

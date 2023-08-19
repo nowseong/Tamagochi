@@ -15,12 +15,25 @@
         justify-content: center;
     }
     .content {
-        background: white;
+        background: #2b2b2b;
     }
-    // .ToHome {
-    //     background: #22b8cf;
-    //     color: white;
-    //     margin-top: 10px;
-    //     border-radius: 10px;
-    // }
+    .bottom {
+        background: #22b8cf;
+        height: 50px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        .todos-tohome {
+            margin-right: 10px;
+            display: block;
+            background: #2b2b2b;
+            height: 30px;
+            width: 80px;
+            text-align: center;
+            text-decoration: none;
+            color: #22b8cf;
+            line-height: 30px;
+            border-radius: 5px;
+        }
+    }
 }

@@ -32,8 +32,8 @@ const Home = () => {
                 </div>
             </div>
             <div className="main">
-                <div className="to">{auth.currentUser ? <Link to="/tostudy" className="link">ToStudy List</Link> : <span onClick={onClick}>ToStudy List</span>}</div>
-                <div className="to">{auth.currentUser ? <Link to="/studydiary" className="link">Study Diary</Link> : <span onClick={onClick}>Study Diary</span>}</div>
+                <div className="to">{auth.currentUser ? <Link to="/tostudy" className="link">ToStudy List</Link> : <span onClick={onClick} className="linkwhenNoUser">ToStudy List</span>}</div>
+                <div className="to">{auth.currentUser ? <Link to="/studydiary" className="link">Study Diary</Link> : <span onClick={onClick} className="linkwhenNoUser">Study Diary</span>}</div>
             </div>
         </div>
     );

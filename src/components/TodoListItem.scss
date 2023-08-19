@@ -4,7 +4,10 @@
     display: flex;
     align-items: center;
     &:nth-child(even) {
-        background: #f8f9fa;
+        background: #797979;
+    }
+    &:nth-child(odd) {
+        background: #525252;
     }
     .checkbox {
         cursor: pointer;
@@ -37,9 +40,5 @@
         &:hover {
             color: #ff8787;
         }
-    }
-
-    & + & {
-        border-top: 1px solid #dee2e6;
     }
 }

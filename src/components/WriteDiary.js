@@ -2,6 +2,7 @@ import { onValue, ref, set } from "firebase/database";
 import { useEffect, useRef, useState } from "react"
 import { auth, db } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import './WriteDiary.scss';
 
 const WriteDiary = () => {
     const navigate = useNavigate();
@@ -22,6 +23,10 @@ const WriteDiary = () => {
     }
 
     const onClick = () => {
+        if(text === "") {
+            alert('내용을 작성하세요!');
+            return;
+        }
         date.current = new Date();
         const id = date.current.getTime();
         const diary = {
@@ -33,9 +38,9 @@ const WriteDiary = () => {
     }
 
     return (
-        <div>
-            <textarea onChange={onChange} />
-            <button onClick={onClick}>추가</button>
+        <div className="writediary-body">
+            <textarea onChange={onChange} className="writeText" placeholder="일기 작성"/>
+            <button onClick={onClick} className="addDiary">추가</button>
         </div>
     )
 }
