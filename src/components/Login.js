@@ -2,6 +2,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
+import './Login.scss';
 
 const Login = () => {
     const navigate = useNavigate('/');
@@ -43,17 +44,18 @@ const Login = () => {
     }
 
     return (
-        <div>
-            <div>
-                <div className="signup-email">
-                    <p>email</p>
-                    <input type="text" onChange={onChangeEmail} />
+        <div className="body">
+            <div className="box">
+                <h1 className="title">LOG IN</h1>
+                <div className="innerbox">
+                    <p className="text">email</p>
+                    <input className="input" type="text" onChange={onChangeEmail} />
                 </div>
-                <div className="signup-password">
-                    <p>password</p>
-                    <input type="password" onChange={onChangePw} />
+                <div className="innerbox">
+                    <p className="text">password</p>
+                    <input className="input" type="password" onChange={onChangePw} />
                 </div>
-                <button onClick={login}>Login</button>
+                <button onClick={login} className="btn">Login</button>
             </div>
         </div>
     );

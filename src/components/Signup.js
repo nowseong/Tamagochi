@@ -3,6 +3,7 @@ import { auth, db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, update } from "firebase/database";
+import './Login.scss';
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -25,7 +26,8 @@ const Signup = () => {
             const newUser = {
                 [CreatedUser.user.uid]: {
                     useremail: useremail,
-                    todos: ["empty"]
+                    todos: ["empty"],
+                    diaries: ["empty"]
                 }
             };
             update(usersRef, newUser);
@@ -37,17 +39,18 @@ const Signup = () => {
     }
 
     return (
-        <div>
-            <div>
-                <div className="signup-email">
-                    <p>email</p>
-                    <input type="text" onChange={onChangeEmail} />
+        <div className="body">
+            <div className="box">
+                <h1 className="title">SIGN UP</h1>
+                <div className="innerbox">
+                    <p className="text">email</p>
+                    <input className="input" type="text" onChange={onChangeEmail} />
                 </div>
-                <div className="signup-password">
-                    <p>password</p>
-                    <input type="password" onChange={onChangePw} />
+                <div className="innerbox">
+                    <p className="text">password</p>
+                    <input className="input" type="password" onChange={onChangePw} />
                 </div>
-                <button onClick={register}>Sign Up</button>
+                <button onClick={register} className="btn">Sign Up</button>
             </div>
         </div>
     );

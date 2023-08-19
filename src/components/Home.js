@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { auth } from "../firebase";
 import { useEffect } from "react";
+import './Home.scss';
 
 const Home = () => {
     const logOut = () => {
@@ -18,16 +19,22 @@ const Home = () => {
     }
 
     return (
-        <div>
-            <header>
-                <div>ToStudyList</div>
-                {auth.currentUser ? <span onClick={logOut}>Logout</span> : <Link to="/login">Login</Link>}
-                <div><Link to="/signup">Sign Up</Link></div>
-            </header>
-            <main>
-                {auth.currentUser ? <Link to="/tostudy">Today's Study List</Link> : <span onClick={onClick}>Today's Study List</span>}
-                <div>Today's Study Diary</div>
-            </main>
+        <div className="homebody">
+            <div className="header">
+                <h1 className="title">ToStudyList</h1>
+                <div className="right">
+                    {auth.currentUser ? 
+                        <div onClick={logOut} className="logout">Logout</div> : 
+                        <div className="loginsignup">
+                            <Link to="/login" className="inner">Login</Link>
+                            <Link to="/signup" className="inner">Sign Up</Link>
+                        </div>}
+                </div>
+            </div>
+            <div className="main">
+                <div className="to">{auth.currentUser ? <Link to="/tostudy" className="link">ToStudy List</Link> : <span onClick={onClick}>ToStudy List</span>}</div>
+                <div className="to">{auth.currentUser ? <Link to="/studydiary" className="link">Study Diary</Link> : <span onClick={onClick}>Study Diary</span>}</div>
+            </div>
         </div>
     );
 };
