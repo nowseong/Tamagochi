@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { auth } from "../firebase";
 import { useEffect } from "react";
 import './Home.scss';
+import { CiMemoPad } from 'react-icons/ci';
+import { PiNotePencil } from 'react-icons/pi';
 
 const Home = () => {
     const logOut = () => {
@@ -32,8 +34,33 @@ const Home = () => {
                 </div>
             </div>
             <div className="main">
-                <div className="to">{auth.currentUser ? <Link to="/tostudy" className="link">ToStudy List</Link> : <span onClick={onClick} className="linkwhenNoUser">ToStudy List</span>}</div>
-                <div className="to">{auth.currentUser ? <Link to="/studydiary" className="link">Study Diary</Link> : <span onClick={onClick} className="linkwhenNoUser">Study Diary</span>}</div>
+                {/* <div className="to">
+                    {auth.currentUser ? <Link to="/tostudy" className="link">ToStudy List</Link> : <span onClick={onClick} className="linkwhenNoUser">ToStudy List</span>}
+                    <PiNotePencil />
+                </div>
+                <div className="to">
+                    {auth.currentUser ? <Link to="/studydiary" className="link">Study Diary</Link> : <span onClick={onClick} className="linkwhenNoUser">Study Diary</span>}
+                    <CiMemoPad />
+                </div> */}
+                {auth.currentUser ?
+                    <Link to="/tostudy" className="link">
+                        <h4 className="bigtext">ToStudy List</h4>
+                        <PiNotePencil className="icon" />
+                    </Link> : 
+                    <span onClick={onClick} className="link">
+                        <h4 className="bigtext">ToStudy List</h4>
+                        <PiNotePencil className="icon" />
+                    </span>
+                }
+                {auth.currentUser ? 
+                    <Link to="/studydiary" className="link">
+                        <h4 className="bigtext">Study Diary</h4>
+                        <CiMemoPad className="icon" />
+                    </Link> : 
+                    <span onClick={onClick} className="link">
+                        <h4 className="bigtext">Study Diary</h4>
+                        <CiMemoPad className="icon" />
+                    </span>}
             </div>
         </div>
     );
