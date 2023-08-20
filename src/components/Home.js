@@ -5,20 +5,27 @@ import './Home.scss';
 import { CiMemoPad } from 'react-icons/ci';
 import { PiNotePencil } from 'react-icons/pi';
 
-const Home = () => {
+const Home = ({ setIsLoggedIn }) => {
     const logOut = () => {
         auth.signOut();
+        setIsLoggedIn(false);
         window.location.reload();
         // location.reload();
         // console.log(auth.currentUser);
     };
     useEffect(() => {
         console.log(auth.currentUser);
-    })
+        if(auth.currentUser) {
+            setIsLoggedIn(true);
+        }
+        else {
+            setIsLoggedIn(false);
+        }
+    }, []);
 
     const onClick = () => {
         alert('로그인하세요!');
-    }
+    };
 
     return (
         <div className="homebody">
