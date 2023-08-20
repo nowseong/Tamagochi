@@ -20,7 +20,10 @@ const StudyDiary = () => {
             {diaryList.map(diary => {
                 if (diary !== "empty") {
                     return (
-                        <textarea readOnly className="diary" key={diary.id}>{diary.text}</textarea>
+                        <div className="diarybox">
+                            <textarea readOnly className="diary" key={diary.id}>{diary.text}</textarea>
+                            <p className="date">{`${diary.year}년 ${diary.month}월 ${diary.day}일`}</p>
+                        </div>
                     );
                 }
             })}

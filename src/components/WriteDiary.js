@@ -29,9 +29,15 @@ const WriteDiary = () => {
         }
         date.current = new Date();
         const id = date.current.getTime();
+        const year = date.current.getFullYear();
+        const month = date.current.getMonth()+1;
+        const day = date.current.getDate();
         const diary = {
             id,
-            text
+            text,
+            year,
+            month,
+            day
         };
         set(ref(db, `users/${auth.currentUser.uid}/diaries`), diaries.concat(diary));
         navigate('/studydiary');

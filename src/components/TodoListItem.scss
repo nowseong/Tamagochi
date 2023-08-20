@@ -4,9 +4,6 @@
     display: flex;
     align-items: center;
     &:nth-child(even) {
-        background: #797979;
-    }
-    &:nth-child(odd) {
         background: #525252;
     }
     .checkbox {
@@ -20,6 +17,7 @@
         .text {
             margin-left: 0.5rem;
             flex: 1;
+            color: #22b8cf;
         }
         &.checked {
             svg {
