@@ -14,11 +14,11 @@
             width: 250px;
             height: 250px;
             outline: none;
-            border: 5px solid #22b8cf;
-            border-top: 30px solid #22b8cf;
+            border: 5px solid #53d129;
+            border-top: 30px solid #53d129;
             border-radius: 10px;
             resize: none;
-            color: black;
+            color: #414141;
             font-size: 20px;
             font-weight: bold;
             padding: 5px;
@@ -30,7 +30,7 @@
         }
         &:nth-child(even) {
             .diary {
-                background: #22b8cf;
+                background: #53d129;
                 border: 5px solid #2b2b2b;
                 border-top: 30px solid #2b2b2b;
             }
@@ -43,10 +43,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 5px solid #22b8cf;
+        border: 5px solid #53d129;
         margin: 10px;
         border-radius: 10px;
-        color: #22b8cf;
+        color: #53d129;
         text-decoration: none;
         font-size: 100px;
         background: #2b2b2b;
@@ -55,10 +55,10 @@
         position: fixed;
         bottom: 50px;
         right: 50px;
-        border: 3px solid #22b8cf;
+        border: 3px solid #53d129;
         height: 30px;
         width: 90px;
-        color: #22b8cf;
+        color: #53d129;
         text-decoration: none;
         text-align: center;
         font-size: 20px;
