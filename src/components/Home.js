@@ -30,7 +30,7 @@ const Home = ({ setIsLoggedIn }) => {
     return (
         <div className="homebody">
             <div className="header">
-                <h1 className="title">ToStudyList</h1>
+                <h1 className="title">STUDEASY</h1>
                 <div className="right">
                     {auth.currentUser ? 
                         <div onClick={logOut} className="logout">Logout</div> : 
@@ -51,21 +51,21 @@ const Home = ({ setIsLoggedIn }) => {
                 </div> */}
                 {auth.currentUser ?
                     <Link to="/tostudy" className="link">
-                        <h4 className="bigtext">ToStudy List</h4>
+                        <h5 className="bigtext">ToStudy List</h5>
                         <PiNotePencil className="icon" />
                     </Link> : 
                     <span onClick={onClick} className="link">
-                        <h4 className="bigtext">ToStudy List</h4>
+                        <h5 className="bigtext">ToStudy List</h5>
                         <PiNotePencil className="icon" />
                     </span>
                 }
                 {auth.currentUser ? 
                     <Link to="/studydiary" className="link">
-                        <h4 className="bigtext">Study Diary</h4>
+                        <h5 className="bigtext">Study Diary</h5>
                         <CiMemoPad className="icon" />
                     </Link> : 
                     <span onClick={onClick} className="link">
-                        <h4 className="bigtext">Study Diary</h4>
+                        <h5 className="bigtext">Study Diary</h5>
                         <CiMemoPad className="icon" />
                     </span>}
             </div>
