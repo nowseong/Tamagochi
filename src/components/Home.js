@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import './Home.scss';
 import { CiMemoPad } from 'react-icons/ci';
 import { PiNotePencil } from 'react-icons/pi';
+import { BsPencil } from 'react-icons/bs';
 
 const Home = ({ setIsLoggedIn }) => {
     const logOut = () => {
@@ -30,7 +31,7 @@ const Home = ({ setIsLoggedIn }) => {
     return (
         <div className="homebody">
             <div className="header">
-                <h1 className="title">STUDEASY</h1>
+                <h1 className="title">공100<BsPencil /></h1>
                 <div className="right">
                     {auth.currentUser ? 
                         <div onClick={logOut} className="logout">Logout</div> : 
