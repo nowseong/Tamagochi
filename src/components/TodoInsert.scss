@@ -1,25 +1,31 @@
 .TodoInsert {
     display: flex;
-    background: #495057;
+    margin-bottom: 20px;
     input {
-        background: none;
+        background: linear-gradient(#F2D7CF, #EEF4E6);
+        margin-right: 10px;
+        border-radius: 10px;
         outline: none;
         border: none;
         padding: 0.5rem;
         font-size: 1.125rem;
         line-height: 1.5;
-        color: white;
+        color: black;
+        box-shadow: 3px 3px 5px gray;
         &::placeholder {
-            color: #dee2e6;
+            color: gray;
         }
         flex: 1;
     }
     button {
+        box-shadow: 3px 3px 5px gray;
+        box-sizing: border-box;
+        border-radius: 10px;
         background: none;
         outline: none;
         border: none;
-        background: #868e96;
-        color: white;
+        color: #df8394;
+        border: 3px solid #df8394;
         padding-left: 1rem;
         padding-right: 1rem;
         font-size: 1.5rem;
@@ -28,7 +34,7 @@
         cursor: pointer;
         transition: 0.1s background ease-in;
         &:hover {
-            background: #adb5bd;
+            background: #F3D3CC;
         }
     }
 }

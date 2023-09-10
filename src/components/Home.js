@@ -1,77 +1,35 @@
-import { Link } from "react-router-dom";
-import { auth } from "../firebase";
-import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { auth, db } from "../firebase";
+import { useEffect, useState } from "react";
+import { onValue, ref } from "firebase/database";
 import './Home.scss';
-import { CiMemoPad } from 'react-icons/ci';
-import { PiNotePencil } from 'react-icons/pi';
-import { BsPencil } from 'react-icons/bs';
+import Tamagochi from "./Tamagochi";
 
-const Home = ({ setIsLoggedIn }) => {
-    const logOut = () => {
-        auth.signOut();
-        setIsLoggedIn(false);
-        window.location.reload();
-        // location.reload();
-        // console.log(auth.currentUser);
-    };
+const Home = () => {
+    const navigate = useNavigate();
+    const [level, setLevel] = useState();
+
     useEffect(() => {
-        console.log(auth.currentUser);
-        if(auth.currentUser) {
-            setIsLoggedIn(true);
-        }
-        else {
-            setIsLoggedIn(false);
+        if(auth.currentUser){
+            const Ref = ref(db, `users/${auth.currentUser.uid}/lv`)
+            onValue(Ref, (snapshot) => {
+                setLevel(snapshot.val());
+            });
         }
     }, []);
 
     const onClick = () => {
-        alert('로그인하세요!');
-    };
+        navigate('/login');
+    }
 
     return (
-        <div className="homebody">
-            <div className="header">
-                <h1 className="title">공100<BsPencil /></h1>
-                <div className="right">
-                    {auth.currentUser ? 
-                        <div onClick={logOut} className="logout">Logout</div> : 
-                        <div className="loginsignup">
-                            <Link to="/login" className="inner">Login</Link>
-                            <Link to="/signup" className="inner">Sign Up</Link>
-                        </div>}
-                </div>
-            </div>
-            <div className="main">
-                {/* <div className="to">
-                    {auth.currentUser ? <Link to="/tostudy" className="link">ToStudy List</Link> : <span onClick={onClick} className="linkwhenNoUser">ToStudy List</span>}
-                    <PiNotePencil />
-                </div>
-                <div className="to">
-                    {auth.currentUser ? <Link to="/studydiary" className="link">Study Diary</Link> : <span onClick={onClick} className="linkwhenNoUser">Study Diary</span>}
-                    <CiMemoPad />
-                </div> */}
-                {auth.currentUser ?
-                    <Link to="/tostudy" className="link">
-                        <h5 className="bigtext">ToStudy List</h5>
-                        <PiNotePencil className="icon" />
-                    </Link> : 
-                    <span onClick={onClick} className="link">
-                        <h5 className="bigtext">ToStudy List</h5>
-                        <PiNotePencil className="icon" />
-                    </span>
-                }
-                {auth.currentUser ? 
-                    <Link to="/studydiary" className="link">
-                        <h5 className="bigtext">Study Diary</h5>
-                        <CiMemoPad className="icon" />
-                    </Link> : 
-                    <span onClick={onClick} className="link">
-                        <h5 className="bigtext">Study Diary</h5>
-                        <CiMemoPad className="icon" />
-                    </span>}
-            </div>
+        <div className="home">
+            <h1 className="home_large">함께 성장하는 성장형 공부서비스<br />다마고치 벤쿄 たまごっち</h1>
+            <b className="home_small">할일을 기록 , 관리하고 다마고치를 키워보세요<br />나만의 메모 다이어리를 통해 자신을 성장시키세요</b>
+            <hr className="hr" />
+            {auth.currentUser ? <div className="imagebox"><h2>당신의 다마고치</h2><Tamagochi level={level} /><br /><b>Lv.{level}</b></div> : <button className="start" onClick={onClick}>시작하기</button>}
+            
         </div>
-    );
-};
-
+    )
+}
 export default Home;

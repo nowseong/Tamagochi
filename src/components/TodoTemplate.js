@@ -8,7 +8,6 @@ const TodoTemplate = ({ children }) => {
         <div className='TodoTemplate'>
             <div className='app-title'>오늘의 공부</div>
             <div className='content'>{children}</div>
-            <div className='bottom'><Link to='/' className='todos-tohome'>To Home</Link></div>
         </div>
     );
 };

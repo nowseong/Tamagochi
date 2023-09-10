@@ -9,6 +9,8 @@ const Signup = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [eggname, setEggname] = useState('');
+    const [goal, setGoal] = useState('');
 
     const onChangeEmail = e => {
         setEmail(e.target.value);
@@ -16,6 +18,12 @@ const Signup = () => {
 
     const onChangePw = e => {
         setPassword(e.target.value);
+    };
+    const onChangeEggname = e => {
+        setEggname(e.target.value);
+    };
+    const onChangeGoal = e => {
+        setGoal(e.target.value);
     };
 
     const register = async () => {
@@ -27,7 +35,10 @@ const Signup = () => {
                 [CreatedUser.user.uid]: {
                     useremail: useremail,
                     todos: ["empty"],
-                    diaries: ["empty"]
+                    diaries: ["empty"],
+                    eggname,
+                    goal,
+                    lv: 1
                 }
             };
             update(usersRef, newUser);
@@ -60,6 +71,14 @@ const Signup = () => {
                 <div className="innerbox">
                     <p className="text">password</p>
                     <input className="input" type="password" onChange={onChangePw} />
+                </div>
+                <div className="innerbox">
+                    <p className="text">알 닉네임</p>
+                    <input className="input" type="text" onChange={onChangeEggname} />
+                </div>
+                <div className="innerbox">
+                    <p className="text">희망 목표</p>
+                    <input className="input" type="text" onChange={onChangeGoal} />
                 </div>
                 <button onClick={register} className="btn">Sign Up</button>
             </div>

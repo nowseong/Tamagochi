@@ -36,7 +36,6 @@ const StudyDiary = () => {
                 }
             })}
             <Link to="/writediary" className="towrite"><MdAddCircleOutline /></Link>
-            <Link to='/' className="studydiary-tohome">To Home</Link>
         </div>
     )
 }

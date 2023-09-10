@@ -10,7 +10,7 @@
         resize: none;
         width: 300px;
         height: 400px;
-        background: #53d129;
+        background: linear-gradient(#F5BFBD, #EEF4E6);
         outline: none;
         border-radius: 10px;
         border: none;
@@ -18,13 +18,14 @@
         font-size: 20px;
         font-weight: 600;
         margin: 30px;
+        box-shadow: 3px 3px 5px gray;
     }
     .addDiary {
         box-sizing: border-box;
-        border: 3px solid #53d129;
+        border: 3px solid #df8394;
         height: 50px;
         width: 80px;
-        color: #53d129;
+        color: #df8394;
         text-decoration: none;
         text-align: center;
         font-size: 20px;

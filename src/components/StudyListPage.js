@@ -4,20 +4,24 @@ import TodoInsert from "./TodoInsert";
 import TodoList from "./TodoList";
 import { ref, set, onValue } from "firebase/database";
 import { auth, db } from "../firebase";
+import './StudyListPage.scss';
+import Tamagochi from "./Tamagochi";
 
 const StudyListPage = () => {
   // const [,updateState] = useState();
   // const forceUpdate = useCallback(() => updateState({}), []);
   // const todos = useRef([]);
   const [todos, setTodos] = useState([]);
+  const [level, setLevel] = useState();
   const date = useRef(new Date());
   useEffect(() => {
     // date.current = new Date();
-    const todosRef = ref(db, `users/${auth.currentUser.uid}/todos`);
-    onValue(todosRef, (snapshot) => {
-      const data = snapshot.val();
-      // nextId.current = date.getTime();
-      setTodos(data);
+    const Ref = ref(db, `users/${auth.currentUser.uid}`);
+    onValue(Ref, (snapshot) => {
+      const todosdata = snapshot.val().todos;
+      setTodos(todosdata);
+      const leveldata = snapshot.val().lv;
+      setLevel(leveldata);
     });
     console.log(auth.currentUser);
   }, []);
@@ -49,20 +53,29 @@ const StudyListPage = () => {
   };
 
   const onToggle = id => {
-    // todos.current = todos.map(todo => todo.id === id ? { ...todo, checked: !todo.checked } : todo);
-    set(ref(db, `users/${auth.currentUser.uid}/todos`), todos.map(todo => todo.id === id ? { ...todo, checked: !todo.checked } : todo));
+    set(ref(db, `users/${auth.currentUser.uid}/todos`), todos.map(todo => todo.id === id ? { ...todo, checked: true } : todo));
     setTodos(
       todos.map(todo =>
-          todo.id === id ? { ...todo, checked: !todo.checked } : todo
+          todo.id === id ? { ...todo, checked: true } : todo
       ),
     );
-    // forceUpdate();
   }
+  const levelUp = () => {
+    set(ref(db, `users/${auth.currentUser.uid}/lv`), level+1);
+    setLevel(level+1);
+  }
+
   return (
-    <TodoTemplate>
-      <TodoInsert onInsert={onInsert} />
-      <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
-    </TodoTemplate>
+    <div className="container">
+      <div className="tamagochi">
+        <Tamagochi level={level} />
+        <strong>Lv.{level}</strong>
+      </div>
+      <TodoTemplate>
+        <TodoInsert onInsert={onInsert} />
+        <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} levelUp={levelUp} />
+      </TodoTemplate>
+    </div>
   );
 };
 

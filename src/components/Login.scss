@@ -6,44 +6,45 @@
     justify-content: center;
     align-items: center;
     .box {
-        width: 400px;
-        height: 550px;
+        width: 600px;
+        height: 800px;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
-        background: #2b2b2b;
-        border-radius: 30px;
+        background: linear-gradient(#F5BFBD, #EEF4E6);
+        border-radius: 50% / 60% 60% 40% 40%;
         padding-bottom: 30px;
         .title {
-            color: #53d129;
+            color: #df8394;
         }
         .innerbox {
             .text {
-                color: #53d129;
+                color: #df8394;
                 font-size: 20px;
                 font-weight: 600;
             }
             .input {
-                border: 3px solid #53d129;
+                border: 3px solid #df8394;
                 outline: none;
                 font-size: 20px;
                 border-radius: 5px;
+                background: none;
             }
             padding-bottom: 50px;
         }
         .btn {
             display: block;
             padding: 5px;
-            background: #2b2b2b;
-            color: #53d129;
+            background: none;
+            color: #df8394;
             outline: none;
             border-radius: 5px;
-            border: none;
+            border: 3px solid #df8394;
             font-size: 25px;
             font-weight: 700;
             cursor: pointer;
-            border: #53d129 3px solid;
+            border: #df8394 3px solid;
         }
     }
 }
