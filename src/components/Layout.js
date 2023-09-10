@@ -34,7 +34,7 @@ const Layout = ({ setIsLoggedIn }) => {
         <div className="body">
             <div className="header">
                 <div className="left">
-                    <h3 className="title" onClick={() => {navigate('/');}}>다마고치 벤쿄<BsPencil /></h3>
+                    <h3 className="title" onClick={() => {navigate('/');}}><span>다마고치 벤쿄</span><BsPencil /></h3>
                     {auth.currentUser ?
                         <Link to="/profile" className="nav">
                             <BiUser />
