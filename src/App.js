@@ -15,6 +15,7 @@ function App() {
   useEffect(() => {
     console.log(auth.currentUser);
   })
+  
   return (
     <Routes>
       <Route element={<Layout setIsLoggedIn={setIsLoggedIn} />}>
