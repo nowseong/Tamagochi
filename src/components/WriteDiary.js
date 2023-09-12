@@ -21,7 +21,11 @@ const WriteDiary = () => {
     const onChange = (e) => {
         setText(e.target.value);
     }
-
+    const handleKeyPress = (e) => {
+        if (e.key === "Enter") {
+            onClick(); // Enter 키를 누르면 로그인 함수 호출
+        }
+    };
     const onClick = () => {
         if(text === "") {
             alert('내용을 작성하세요!');
@@ -45,7 +49,7 @@ const WriteDiary = () => {
 
     return (
         <div className="writediary-body">
-            <textarea onChange={onChange} className="writeText" placeholder="일기 작성"/>
+            <textarea onKeyPress={handleKeyPress} onChange={onChange} className="writeText" placeholder="일기 작성"/>
             <button onClick={onClick} className="addDiary">추가</button>
         </div>
     )

@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import './Layout.scss';
 import { CiMemoPad } from 'react-icons/ci';
 import { PiNotePencil } from 'react-icons/pi';
-import { BsPencil } from 'react-icons/bs';
 import { BiUser } from 'react-icons/bi';
 
 const Layout = ({ setIsLoggedIn }) => {
@@ -31,42 +30,44 @@ const Layout = ({ setIsLoggedIn }) => {
     };
 
     return (
-        <div className="body">
+        <div className="homebody">
             <div className="header">
-                <div className="left">
-                    <h3 className="title" onClick={() => {navigate('/');}}><span>다마고치 벤쿄</span><BsPencil /></h3>
-                    {auth.currentUser ?
-                        <Link to="/profile" className="nav">
-                            <BiUser />
-                        </Link> : 
-                        <span onClick={onClick} className="nav">
-                            <BiUser />
-                        </span>
-                    }
-                    {auth.currentUser ?
-                        <Link to="/tostudy" className="nav">
-                            <PiNotePencil />
-                        </Link> : 
-                        <span onClick={onClick} className="nav">
-                            <PiNotePencil />
-                        </span>
-                    }
-                    {auth.currentUser ? 
-                        <Link to="/studydiary" className="nav">
-                            <CiMemoPad />
-                        </Link> : 
-                        <span onClick={onClick} className="nav">
-                            <CiMemoPad />
-                        </span>}
-                </div>
-                <div className="right">
-                    {auth.currentUser ? 
-                        <div onClick={logOut} className="logout">Logout</div> : 
-                        <div className="loginsignup">
-                            <Link to="/login" className="inner">Login</Link>
-                            <Link to="/signup" className="inner">Sign Up</Link>
-                        </div>}
-                </div>
+                    <h3 className="title" onClick={() => {navigate('/');}}><img src="images/logo0.svg"></img></h3>
+                    <div className="navbar">
+                        {auth.currentUser ?
+                            <Link to="/profile" className="nav">
+                                <BiUser />
+                            </Link> : 
+                            <span onClick={onClick} className="nav">
+                                <BiUser />
+                            </span>
+                        }
+                        {auth.currentUser ?
+                            <Link to="/tostudy" className="nav">
+                                <PiNotePencil />
+                            </Link> : 
+                            <span onClick={onClick} className="nav">
+                                <PiNotePencil />
+                            </span>
+                        }
+                        {auth.currentUser ? 
+                            <Link to="/studydiary" className="nav">
+                                <CiMemoPad />
+                            </Link> : 
+                            <span onClick={onClick} className="nav">
+                                <CiMemoPad />
+                            </span>}
+                        
+                    </div>
+                    <div className="right">
+
+                        {auth.currentUser ? 
+                            <div onClick={logOut} className="logout">로그아웃</div> : 
+                            <div className="loginsignup">
+                                <Link to="/login" className="inner">로그인</Link>
+                                <Link to="/signup" className="inner">회원가입</Link>
+                            </div>}
+                    </div>        
             </div>
             <div className="main">
                 <Outlet />

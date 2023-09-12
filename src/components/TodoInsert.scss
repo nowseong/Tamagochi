@@ -2,7 +2,7 @@
     display: flex;
     margin-bottom: 20px;
     input {
-        background: linear-gradient(#F2D7CF, #EEF4E6);
+        background: #fff;
         margin-right: 10px;
         border-radius: 10px;
         outline: none;
@@ -12,6 +12,7 @@
         line-height: 1.5;
         color: black;
         box-shadow: 3px 3px 5px gray;
+        border: 3px solid #df8394;
         &::placeholder {
             color: gray;
         }

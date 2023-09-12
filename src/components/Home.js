@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import { auth, db } from "../firebase";
 import { useEffect, useState } from "react";
 import { onValue, ref } from "firebase/database";
@@ -23,13 +23,22 @@ const Home = () => {
     }
 
     return (
-        <div className="home">
-            <h1 className="home_large">함께 성장하는 성장형 공부서비스<br />다마고치 벤쿄 たまごっち</h1>
-            <b className="home_small">할일을 기록 , 관리하고 다마고치를 키워보세요<br />나만의 메모 다이어리를 통해 자신을 성장시키세요</b>
-            <hr className="hr" />
-            {auth.currentUser ? <div className="imagebox"><h2>당신의 다마고치</h2><Tamagochi level={level} /><br /><b>Lv.{level}</b></div> : <button className="start" onClick={onClick}>시작하기</button>}
-            
+        <div className="main">
+        <div className="text-box">
+          <div className="bigText">
+            <div>함께 성장하는 성장형 공부서비스</div>
+            <div className="logo-name"><div className="korean">다마고치 벤쿄</div><div className="japan">たまごっち勉強</div></div>
+          </div>
+          <div className="smallText">할일을 기록 , 관리하고 다마고치를 키워보세요</div>
+          <div className="smallText">나만의 다이어리를 통해 자신을 성장시키세요</div>
+          
+          {auth.currentUser ? (
+            <Link to="/tostudy" className="button">시작하기</Link>
+          ) : (
+            <Link to="/login" className="button">시작하기</Link>
+          )}
         </div>
+      </div>
     )
 }
 export default Home;
